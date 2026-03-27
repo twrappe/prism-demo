@@ -348,7 +348,7 @@ html, body {
   </div>
 
   <div class="tabbar">
-    <div class="tab active">prism@silicon-node-01</div>
+    <div class="tab active">prism@demo-node-01</div>
     <div class="tab">logs</div>
     <div class="tab">+</div>
   </div>
@@ -356,7 +356,7 @@ html, body {
   <div class="terminal" id="terminal"></div>
 
   <div class="input-row">
-    <span class="input-prompt">prism@silicon-node-01 ~/prism $</span>
+    <span class="input-prompt">prism@demo-node-01 ~/prism $</span>
     <input class="term-input" id="term-input" type="text" autocomplete="off" spellcheck="false" placeholder="type a command or press enter to run…">
     <span class="input-hint">↑↓ history · tab complete</span>
   </div>
@@ -484,17 +484,17 @@ function boot() {
   line('', `<span class="cmd"><span class="c-bin">prism</span> <span class="c-flag">--version</span></span>`, 'gap');
   out(`PRISM v0.1.0-prototype`, 'green bold');
   out(`Pipeline Root-cause Intelligence for Structure &amp; Media`, 'dim');
-  out(`CI/CD Failure Analysis · github.com/twrappe/prism`, 'dim');
+  out(`CI/CD Failure Analysis · github.com/your-org/prism`, 'dim');
 
   blank();
   line('', `<span class="cmd"><span class="c-bin">prism</span> <span class="c-flag">run</span> <span class="c-arg">--pipeline</span> <span class="c-str">silicon-validation</span> <span class="c-flag">--env</span> <span class="c-arg">ci</span></span>`, 'gap');
   blank();
 
   out(`Initializing PRISM pipeline…`, 'dim');
-  out(`Loading config from <span style="color:var(--teal)">./config/silicon.yaml</span>`, 'dim');
+  out(`Loading config from <span style="color:var(--teal)">./config/pipeline.yaml</span>`, 'dim');
   out(`Connecting to ChromaDB at <span style="color:var(--teal)">localhost:8000</span>  ${badge('ok','CONNECTED')}`, '');
   out(`OpenAI endpoint health check  ${badge('ok','200 OK')}`, '');
-  out(`K8s context: <span style="color:var(--amber)">silicon-node-01</span>  HPA: <span style="color:var(--green)">active</span>  replicas: <span style="color:var(--white)">3/3</span>`, '');
+  out(`K8s context: <span style="color:var(--amber)">demo-node-01</span>  HPA: <span style="color:var(--green)">active</span>  replicas: <span style="color:var(--white)">3/3</span>`, '');
 
   blank();
   out(`┌─ Failure type registration ───────────────────────┐`, 'dim');
@@ -636,9 +636,9 @@ const commands = {
         `  root_cause       NAL unit syntax error: forbidden_zero_bit = 1`,
         `  severity         <span style="color:var(--coral)">HIGH</span>`,
         `  confidence       <span style="color:var(--green)">0.94</span>`,
-        `  build_regression build v4.2.1 → v4.2.2  (driver: amd64-v812)`,
+        `  build_regression build v0.0.1 → v0.0.2  (driver: driver-xxx)`,
         ``,
-        `  top_fix          Revert NAL header serializer patch (commit a3f9c2e)`,
+        `  top_fix          Revert serializer patch (commit abc1234)`,
         `  success_prob     <span style="color:var(--green)">0.87</span>`,
         ``,
         `  similar_failures 12 in corpus  (last seen: 2024-09-14)`,
@@ -757,7 +757,7 @@ input.addEventListener('keydown', e => {
     histIdx = -1;
 
     lineIndex = 0;
-    line('prism@ci-node-01 ~/prism $', `<span class="cmd">${raw}</span>`, 'gap');
+    line('prism@demo-node-01 ~/prism $', `<span class="cmd">${raw}</span>`, 'gap');
 
     const handler = aliases[raw] || aliases[raw.split(' ').slice(0,2).join(' ')];
     if (handler) {
